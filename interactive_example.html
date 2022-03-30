@@ -13229,7 +13229,7 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
 <span class="c1"># horizontally aligned sliders (3)</span>
 <span class="n">h3</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">w_I</span><span class="p">,</span> <span class="n">w_sd</span><span class="p">])</span>
 <span class="c1"># vertical box stacking h0..h3</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">h0</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">h3</span><span class="p">],</span> <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;#EEE&#39;</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">h0</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">h3</span><span class="p">])</span> <span class="c1"># , background_color=&#39;#EEE&#39;</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;nt&#39;</span><span class="p">:</span> <span class="n">w_nt</span><span class="p">,</span> 
     <span class="s1">&#39;wu&#39;</span><span class="p">:</span> <span class="n">w_wu</span><span class="p">,</span> 
@@ -13273,14 +13273,15 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
 <span class="sd">w_v0 = widgets.FloatSlider(value=-70, min=-100, max=40, description=&#39;v0:&#39;) # v0</span>
 <span class="sd">w_vpeak = widgets.FloatSlider(value=30, min=-10, max=50, description=&#39;vpeak:&#39;) # vpeak</span>
 <span class="sd">w_I = widgets.FloatSlider(value=10, min=0, max=30, description=&#39;I:&#39;) # current</span>
+
 <span class="sd"># horizontally aligned sliders (0)</span>
-<span class="sd">#h0 = widgets.HBox([w_nt, w_wu, w_dt])</span>
+<span class="sd">h0 = widgets.HBox([w_nt, w_wu, w_dt])</span>
 <span class="sd"># horizontally aligned sliders (1)</span>
-<span class="sd">#h1 = widgets.HBox([w_a, w_b, w_c, w_d])</span>
+<span class="sd">h1 = widgets.HBox([w_a, w_b, w_c, w_d])</span>
 <span class="sd"># horizontally aligned sliders (2)</span>
-<span class="sd">#h2 = widgets.HBox([w_v0, w_vpeak])</span>
+<span class="sd">h2 = widgets.HBox([w_v0, w_vpeak])</span>
 <span class="sd"># horizontally aligned sliders (3)</span>
-<span class="sd">#h3 = widgets.HBox([w_I, w_sd])</span>
+<span class="sd">h3 = widgets.HBox([w_I, w_sd])</span>
 <span class="sd"># vertical box stacking h0..h3</span>
 <span class="sd">#v = widgets.VBox([h0, h1, h2, h3], background_color=&#39;#EEE&#39;)</span>
 <span class="sd">params = {</span>
@@ -13296,8 +13297,9 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
 <span class="sd">    &#39;vpeak&#39;: w_vpeak, </span>
 <span class="sd">    &#39;I&#39;: w_I, </span>
 <span class="sd">}</span>
-<span class="sd">widgets.interactive(izh_neuron, **params)</span>
+<span class="sd">#widgets.VBox([h0, h1, h2, h3], background_color=&#39;#EEE&#39;)</span>
 <span class="sd">#display(v, out)</span>
+<span class="sd">widgets.interactive(izh_neuron, **params)</span>
 <span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 
