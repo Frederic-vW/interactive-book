@@ -13149,6 +13149,25 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>NumPy version:  1.19.5
+Matplotlib version:  3.3.1
+ipywidgets version:  7.7.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
   </div>
 
   
@@ -13195,7 +13214,8 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
   </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Video">Video<a class="anchor-link" href="#Video">&#182;</a></h2>
+<h2 id="interactive-widget">interactive widget<a class="anchor-link" href="#interactive-widget">&#182;</a></h2><p><a href="https://ipywidgets.readthedocs.io/en/latest/examples/Using%20Interact.html">documentation</a></p>
+
 </div>
 </div>
 </div>
@@ -13208,11 +13228,44 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#from IPython.display import YouTubeVideo</span>
-<span class="c1">#out = widgets.Output(layout={&#39;border&#39;: &#39;1px solid black&#39;})</span>
-<span class="c1">#with out:</span>
-<span class="c1">#    display(YouTubeVideo(&#39;oz-AR_JOTXY&#39;))</span>
-<span class="c1">#out</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">w_nt = widgets.IntSlider(value=10000, min=1000, max=100000, description=&#39;nt:&#39;) # number of samples</span>
+<span class="sd">w_wu = widgets.IntSlider(value=10000, min=1000, max=100000, description=&#39;wu:&#39;) # number of warm-up samples</span>
+<span class="sd">w_dt = widgets.FloatSlider(value=0.05, min=0.01, max=0.1, description=&#39;dt:&#39;) # sampling interval</span>
+<span class="sd">w_sd = widgets.FloatSlider(value=0.1, min=0, max=10, description=&#39;sd:&#39;) # noise</span>
+<span class="sd">w_a = widgets.FloatSlider(value=0.02, min=0, max=1.0, description=&#39;a:&#39;) # a</span>
+<span class="sd">w_b = widgets.FloatSlider(value=0.2, min=0, max=1.0, description=&#39;b:&#39;) # b</span>
+<span class="sd">w_c = widgets.FloatSlider(value=-50, min=-90, max=0, description=&#39;c:&#39;) # c</span>
+<span class="sd">w_d = widgets.FloatSlider(value=2, min=0, max=10, description=&#39;d:&#39;) # d</span>
+<span class="sd">w_v0 = widgets.FloatSlider(value=-70, min=-100, max=40, description=&#39;v0:&#39;) # v0</span>
+<span class="sd">w_vpeak = widgets.FloatSlider(value=30, min=-10, max=50, description=&#39;vpeak:&#39;) # vpeak</span>
+<span class="sd">w_I = widgets.FloatSlider(value=10, min=0, max=30, description=&#39;I:&#39;) # current</span>
+<span class="sd"># horizontally aligned sliders (0)</span>
+<span class="sd">h0 = widgets.HBox([w_nt, w_wu, w_dt])</span>
+<span class="sd"># horizontally aligned sliders (1)</span>
+<span class="sd">h1 = widgets.HBox([w_a, w_b, w_c, w_d])</span>
+<span class="sd"># horizontally aligned sliders (2)</span>
+<span class="sd">h2 = widgets.HBox([w_v0, w_vpeak])</span>
+<span class="sd"># horizontally aligned sliders (3)</span>
+<span class="sd">h3 = widgets.HBox([w_I, w_sd])</span>
+<span class="sd"># vertical box stacking h0..h3</span>
+<span class="sd">v = widgets.VBox([h0, h1, h2, h3], background_color=&#39;#EEE&#39;)</span>
+<span class="sd">params = {</span>
+<span class="sd">    &#39;nt&#39;: w_nt, </span>
+<span class="sd">    &#39;wu&#39;: w_wu, </span>
+<span class="sd">    &#39;dt&#39;: w_dt, </span>
+<span class="sd">    &#39;sd&#39;: w_sd, </span>
+<span class="sd">    &#39;a&#39;: w_a, </span>
+<span class="sd">    &#39;b&#39;: w_b, </span>
+<span class="sd">    &#39;c&#39;: w_c, </span>
+<span class="sd">    &#39;d&#39;: w_d, </span>
+<span class="sd">    &#39;v0&#39;: w_v0, </span>
+<span class="sd">    &#39;vpeak&#39;: w_vpeak, </span>
+<span class="sd">    &#39;I&#39;: w_I, </span>
+<span class="sd">}</span>
+<span class="sd">out = widgets.interactive_output(izh_neuron, params)</span>
+<span class="sd">display(v, out)</span>
+<span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 
     </div>
@@ -13220,13 +13273,6 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
 </div>
 
   </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="interactive-widget">interactive widget<a class="anchor-link" href="#interactive-widget">&#182;</a></h2><p><a href="https://ipywidgets.readthedocs.io/en/latest/examples/Using%20Interact.html">documentation</a></p>
-
-</div>
-</div>
-</div>
 
   
 
@@ -13248,15 +13294,15 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
 <span class="n">w_vpeak</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;vpeak:&#39;</span><span class="p">)</span> <span class="c1"># vpeak</span>
 <span class="n">w_I</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;I:&#39;</span><span class="p">)</span> <span class="c1"># current</span>
 <span class="c1"># horizontally aligned sliders (0)</span>
-<span class="n">h0</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">w_nt</span><span class="p">,</span> <span class="n">w_wu</span><span class="p">,</span> <span class="n">w_dt</span><span class="p">])</span>
+<span class="c1">#h0 = widgets.HBox([w_nt, w_wu, w_dt])</span>
 <span class="c1"># horizontally aligned sliders (1)</span>
-<span class="n">h1</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">w_a</span><span class="p">,</span> <span class="n">w_b</span><span class="p">,</span> <span class="n">w_c</span><span class="p">,</span> <span class="n">w_d</span><span class="p">])</span>
+<span class="c1">#h1 = widgets.HBox([w_a, w_b, w_c, w_d])</span>
 <span class="c1"># horizontally aligned sliders (2)</span>
-<span class="n">h2</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">w_v0</span><span class="p">,</span> <span class="n">w_vpeak</span><span class="p">])</span>
+<span class="c1">#h2 = widgets.HBox([w_v0, w_vpeak])</span>
 <span class="c1"># horizontally aligned sliders (3)</span>
-<span class="n">h3</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">w_I</span><span class="p">,</span> <span class="n">w_sd</span><span class="p">])</span>
+<span class="c1">#h3 = widgets.HBox([w_I, w_sd])</span>
 <span class="c1"># vertical box stacking h0..h3</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">h0</span><span class="p">,</span> <span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">,</span> <span class="n">h3</span><span class="p">],</span> <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;#EEE&#39;</span><span class="p">)</span>
+<span class="c1">#v = widgets.VBox([h0, h1, h2, h3], background_color=&#39;#EEE&#39;)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;nt&#39;</span><span class="p">:</span> <span class="n">w_nt</span><span class="p">,</span> 
     <span class="s1">&#39;wu&#39;</span><span class="p">:</span> <span class="n">w_wu</span><span class="p">,</span> 
@@ -13270,11 +13316,32 @@ Technique explained in this <a href="https://elc.github.io/posts/embed-interacti
     <span class="s1">&#39;vpeak&#39;</span><span class="p">:</span> <span class="n">w_vpeak</span><span class="p">,</span> 
     <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="n">w_I</span><span class="p">,</span> 
 <span class="p">}</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">izh_neuron</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+<span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">izh_neuron</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="c1">#display(v, out)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    
+
+
+
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
+
+</div>
+
 </div>
 </div>
 
