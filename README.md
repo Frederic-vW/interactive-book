@@ -7,7 +7,7 @@
 
 <details>
   Details go here...
-  1. First item
-  2. Second thing
-  3. Third line
+  - First item
+  - Second thing
+  - Third line
 </details>
