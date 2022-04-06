@@ -4,10 +4,3 @@
 (https://frederic-vw.github.io/interactive-book/interactive_example.html)
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Frederic-vW/interactive-book/HEAD?labpath=interactive_example.ipynb)
-
-<details>
-  Details go here...
-  - First item
-  - Second thing
-  - Third line
-</details>
